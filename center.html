@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="paper-full.js"></script>
+    <script type="text/paperscript" canvas="paper">
+      var center = 250;
+      var circles = [];
+
+      function onFrame(event) {
+        circles.forEach(function(circle) {
+          if (circle.position.x === center && circle.position.y === center) {
+            return;
+          }
+
+          if (circle.position.x < center) circle.position.x += 1;
+          else circle.position.x -= 1;
+
+
+          if (circle.position.y < center) circle.position.y += 1;
+          else circle.position.y -= 1;
+        });
+      }
+
+      document.getElementById('paper').onclick = function(e) {
+        var circle = new Path.Circle(new Point(e.offsetX, e.offsetY), 10);
+        circle.fillColor = '#ff0000'
+        circles.push(circle);
+      }
+    </script>
+  </head>
+  <body>
+    <canvas id="paper" width="500" height="500" style="background-color: #dddddd;"></canvas>
+  </body>
+</html>
+
