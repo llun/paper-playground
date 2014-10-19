@@ -12,12 +12,20 @@
             return;
           }
 
-          if (circle.position.x < center) circle.position.x += 1;
-          else circle.position.x -= 1;
+          if (Math.abs(circle.position.x - center) < 1 && Math.abs(circle.position.y - center) < 1) {
+            circle.position.x = center;
+            circle.position.y = center;
+            return;
+          }
 
+          var diffX = circle.position.x - center;
+          var diffY = circle.position.y - center;
 
-          if (circle.position.y < center) circle.position.y += 1;
-          else circle.position.y -= 1;
+          var diffZ = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2))
+
+          circle.position.x -= diffX/diffZ;
+          circle.position.y -= diffY/diffZ;
+
         });
       }
 
