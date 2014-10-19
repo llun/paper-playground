@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="paper-full.js"></script>
+    <script type="text/paperscript" canvas="paper">
+      var center = 250;
+      var circle = new Path.Circle(new Point(100, 100), 10);
+      circle.fillColor = '#FF0000';
+
+      var n = 0;
+      function onFrame(event) {
+        var radius = 50;
+        var x = center + radius * Math.sin(n);
+        var y = center + radius * Math.cos(n);
+        circle.position.x = x;
+        circle.position.y = y;
+
+        n -= 0.1;
+      }
+    </script>
+  </head>
+  <body>
+    <canvas id="paper" width="500" height="500" style="background-color: #dddddd;"></canvas>
+  </body>
+</html>
+
